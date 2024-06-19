@@ -7,5 +7,9 @@
     </li>
     }
   </ul>
+  @if (selectedId) {
   <app-tasks [name]="selectedId"></app-tasks>
+  } @else {
+  <h2 id="taskPlaceholder">Select a user to see their task!</h2>
+  }
 </main>
