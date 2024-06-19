@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { DUMMY_USERS } from '../dummy-user';
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -9,17 +7,33 @@ import { DUMMY_USERS } from '../dummy-user';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-
-
-
-selectedUser = DUMMY_USERS[0]
-
-get avatarPath() {
-  return 'assets/users/' + this.selectedUser.avatar
+@Input({required: true}) user!: {
+id: string;
+avatar:string;
+name: string;
 }
+@Output() userSelect = new EventEmitter<string>();
+// @Output() selectName = new EventEmitter<string>();
 
 onSelectUser() {
-console.log('działa')
+this.userSelect.emit(this.user.id);
+console.log(this.user.id)
 }
+
+get avatarPath() {
+  return 'assets/users/'+ this.user.avatar;
+}
+
+// selectedName() {
+// this.selectName.emit(this.user.name);
+// }
+
+// userList = []
+
+// generateUserList() {
+//   DUMMY_USERS.forEach(e => {
+//    return `<li>${e.name}</li>`
+//   });
+// }
 
 }
