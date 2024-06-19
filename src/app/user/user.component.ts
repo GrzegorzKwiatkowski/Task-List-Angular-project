@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+interface User {
+  id: string;
+  avatar:string;
+  name: string;
+}
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -7,13 +12,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-@Input({required: true}) user!: {
-id: string;
-avatar:string;
-name: string;
-}
+@Input({required: true}) user!: User;
 @Output() userSelect = new EventEmitter<string>();
-// @Output() selectName = new EventEmitter<string>();
+
 
 onSelectUser() {
 this.userSelect.emit(this.user.id);
@@ -23,10 +24,6 @@ console.log(this.user.id)
 get avatarPath() {
   return 'assets/users/'+ this.user.avatar;
 }
-
-// selectedName() {
-// this.selectName.emit(this.user.name);
-// }
 
 // userList = []
 
