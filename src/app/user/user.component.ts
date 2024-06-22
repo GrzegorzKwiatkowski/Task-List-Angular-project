@@ -8,24 +8,15 @@ import { User } from './user.model';
 })
 export class UserComponent {
 @Input({required: true}) user!: User;
+@Input({required: true}) selected!: boolean;
 @Output() userSelect = new EventEmitter<string>();
 
 
 onSelectUser() {
 this.userSelect.emit(this.user.id);
-console.log(this.user.id)
 }
 
 get avatarPath() {
   return 'assets/users/'+ this.user.avatar;
 }
-
-// userList = []
-
-// generateUserList() {
-//   DUMMY_USERS.forEach(e => {
-//    return `<li>${e.name}</li>`
-//   });
-// }
-
 }
