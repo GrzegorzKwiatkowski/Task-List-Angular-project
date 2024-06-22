@@ -1,7 +1,7 @@
 <section id="tasks">
   @if(isAddingTask) {<app-add-task
-    (cancel)="onCanselAddTask()"
-    (add)="onAddTask($event)"
+    [userId]="userId"
+    (close)="onCloseAddTask()"
   />}
   <header>
     <h2>{{ name }}'s Tasks</h2>
