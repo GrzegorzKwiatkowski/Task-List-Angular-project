@@ -28,6 +28,6 @@ this.tasksService.addTask({
   summary: this.enteredSummary,
   date: this.enteredDate
 }, this.userId);
-this.close.emit()
+this.close.emit();
 }
 }
